@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { FormControl, FormLabel, Input, Button } from '@chakra-ui/react';
-import { getPostBySearch } from '@/app/services';
 import useSWR from 'swr';
+import { getPostsBySearch } from '@/app/services';
 
 const PostSearch = () => {
   const [input, setInput] = useState('');
@@ -11,7 +11,7 @@ const PostSearch = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const posts = await getPostBySearch(input);
+    const posts = await getPostsBySearch(input);
     mutate(posts);
   };
 

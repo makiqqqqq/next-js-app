@@ -1,37 +1,19 @@
 'use client';
-import React, { useState, useEffect } from 'react';
 import Posts from '@/components/Posts';
 import PostSearch from '@/components/PostSearch';
 import useSWR from 'swr';
+import { getAllPosts } from '@/app/services';
 
 export type Post = {
-  userId: number;
+  postId: number;
   id: number;
   title: string;
+  name: string;
   body: string;
-};
-
-const getAllPosts = async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-    next: {
-      revalidate: 60
-    }
-  });
-  if (!response.ok) throw new Error('Unable to fetch posts!');
-
-  return response.json();
 };
 
 const BlogPage = () => {
   const { data: posts, isLoading } = useSWR('posts', getAllPosts);
-  // const [posts, setPosts] = useState<Post[]>([]);
-  // const [loading, setLoading] = useState<boolean>(true);
-  //
-  // useEffect(() => {
-  //   getAllPosts()
-  //     .then(setPosts)
-  //     .finally(() => setLoading(false));
-  // }, []);
 
   return (
     <div className="container-center">

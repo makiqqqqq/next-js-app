@@ -1,4 +1,3 @@
-import React, { FC } from 'react';
 import { Post } from '@/app/blog/page';
 import { Link } from '@chakra-ui/next-js';
 import { OrderedList, ListItem } from '@chakra-ui/react';
@@ -13,7 +12,7 @@ const Posts = ({ posts }: PostsProps) => {
       {posts.map((post: Post) => (
         <ListItem key={post.id}>
           <span>{post.id}. </span>
-          <Link href={`/blog/${post.id}`}>{post.title}</Link>
+          <Link href={`/blog/${post.id}`}>{post.name}</Link>
         </ListItem>
       ))}
     </OrderedList>
