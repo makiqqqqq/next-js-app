@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from '@/components/Navigation';
 
 const Header = () => {
+
   const ROUTES = [
     {
       href: '/',
@@ -16,6 +17,9 @@ const Header = () => {
       label: 'Blog'
     }
   ];
+
+  console.log(process.env.GOOGLE_CLIENT_ID as string);
+  console.log(process.env);
 
   return (
     <header>
